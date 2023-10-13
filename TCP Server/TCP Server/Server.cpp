@@ -35,55 +35,57 @@ void Server::onClientReadyRead()
     float rval = (float)val / (float)100;
     char c[2];
     strcpy(c, "");
-    if (str.endsWith("?")) {
-        if (str.startsWith("Td"))
-        {
-            qDebug() << "Temperature demandee en degres celsius";
-            QString reponse = "Td";
-            reponse.append(subString);
-            if (rval > 0)
+    if (strlen(obj) == 5) {
+        if (str.endsWith("?")) {
+            if (str.startsWith("Td"))
             {
-                reponse += ",+";
-                reponse += QString::number(rval);
+                qDebug() << "Temperature demandee en degres celsius";
+                QString reponse = "Td";
+                reponse.append(subString);
+                if (rval > 0)
+                {
+                    reponse += ",+";
+                    reponse += QString::number(rval);
+                }
+                else {
+                    reponse += ",";
+                    reponse += QString::number(rval);
+                }
+                socket->write(reponse.toUtf8());
             }
-            else {
+            if (str.startsWith("Tf"))
+            {
+                rval = (rval * 9.0 / 5.0) + 32;
+                qDebug() << "Temperature demandee en Faraneite";
+                QString reponse = "Tf";
+                reponse.append(subString);
+                if (rval > 0)
+                {
+                    reponse += ",+";
+                    reponse += QString::number(rval);
+                }
+                else {
+                    reponse += ",-";
+                    rval *= -1;
+                    reponse += QString::number(rval);
+                }
+
+                socket->write(reponse.toUtf8());
+            }
+
+            if (str.startsWith("Hr")) {
+                int val = (rand() % 999);
+                float rval = (float)val / (float)10;
+                qDebug() << "Taux d'humidité";
+                QString reponse = "Hr";
+                reponse.append(subString);
+
                 reponse += ",";
                 reponse += QString::number(rval);
+                reponse += "%";
+
+                socket->write(reponse.toUtf8());
             }
-            socket->write(reponse.toUtf8());
-        }
-        if (str.startsWith("Tf"))
-        {
-            rval = (rval * 9.0 / 5.0) + 32;
-            qDebug() << "Temperature demandee en Faraneite";
-            QString reponse = "Tf";
-            reponse.append(subString);
-            if (rval > 0)
-            {
-                reponse += ",+";
-                reponse += QString::number(rval);
-            }
-            else {
-                reponse += ",-";
-                rval *= -1;
-                reponse += QString::number(rval);
-            }
-
-            socket->write(reponse.toUtf8());
-        }
-
-        if (str.startsWith("Hr")) {
-            int val = (rand() % 999);
-            float rval = (float)val / (float)10;
-            qDebug() << "Taux d'humidité";
-            QString reponse = "Hr";
-            reponse.append(subString);
-
-            reponse += ",";
-            reponse += QString::number(rval);
-            reponse += "%";
-
-            socket->write(reponse.toUtf8());
         }
     }
 }
