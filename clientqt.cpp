@@ -45,6 +45,7 @@ void clientQT::onSocketReadyRead(){
     QByteArray data = socket->read(socket->bytesAvailable());
     QString str(data);
     ui->statutConnectLabel->setText("Statut connexion : Message recu = " + str);
+    ui->lineEditANSWER->setText(str);
 }
 
 void clientQT::onDataReceived(){
@@ -54,14 +55,26 @@ void clientQT::onDataReceived(){
 }
 
 void clientQT::onCelciusClicked(){
-
+    QString celcius = ui->lineEditASK->text();
+    QString val = "Td" + celcius;
+    QByteArray msg = val.toUtf8();
+    //ui->lineEditANSWER->setText(msg);
+    socket->write(msg);
 }
 
 void clientQT::onFarenheitClicked(){
-
+    QString farenheit = ui->lineEditASK->text();
+    QString val = "Tf" + farenheit;
+    QByteArray msg = val.toUtf8();
+    //ui->lineEditANSWER->setText(msg);
+    socket->write(msg);
 }
 
 void clientQT::onHygrometrieClicked(){
-
+    QString hygrometrie = ui->lineEditASK->text();
+    QString val = "Tr" + hygrometrie;
+    QByteArray msg = val.toUtf8();
+    //ui->lineEditANSWER->setText(msg);
+    socket->write(msg);
 }
 

@@ -102,36 +102,36 @@
    <widget class="QPushButton" name="celciusButton">
     <property name="geometry">
      <rect>
-      <x>230</x>
-      <y>100</y>
-      <width>100</width>
-      <height>91</height>
+      <x>240</x>
+      <y>130</y>
+      <width>111</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>degrés Celcius</string>
+     <string>°C</string>
     </property>
    </widget>
    <widget class="QPushButton" name="farenheitButton">
     <property name="geometry">
      <rect>
-      <x>350</x>
-      <y>100</y>
-      <width>111</width>
-      <height>91</height>
+      <x>370</x>
+      <y>130</y>
+      <width>101</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
-     <string>degrés Farenheit</string>
+     <string>°F</string>
     </property>
    </widget>
    <widget class="QPushButton" name="hygrometrieButton">
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>100</y>
-      <width>111</width>
-      <height>91</height>
+      <x>490</x>
+      <y>130</y>
+      <width>131</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="text">
@@ -141,20 +141,20 @@
    <widget class="QLineEdit" name="lineEditASK">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>10</y>
-      <width>141</width>
-      <height>91</height>
+      <x>320</x>
+      <y>0</y>
+      <width>191</width>
+      <height>121</height>
      </rect>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEditANSWER">
     <property name="geometry">
      <rect>
-      <x>330</x>
-      <y>220</y>
-      <width>161</width>
-      <height>111</height>
+      <x>320</x>
+      <y>190</y>
+      <width>191</width>
+      <height>121</height>
      </rect>
     </property>
    </widget>
