@@ -44,8 +44,15 @@ void clientQT::onSendMessageButtonClicked(){
 void clientQT::onSocketReadyRead(){
     QByteArray data = socket->read(socket->bytesAvailable());
     QString str(data);
+    int indexVirgule = str.indexOf(',');
+    QString avantLaVirgule;
+    QString aprèsLaVirgule;
+    if(indexVirgule != -1 && indexVirgule < str.length() -1 ){
+        avantLaVirgule = str.left(indexVirgule).trimmed();
+        aprèsLaVirgule = str.mid(indexVirgule + 1).trimmed();
+    }
     ui->statutConnectLabel->setText("Statut connexion : Message recu = " + str);
-    ui->lineEditANSWER->setText(str);
+    ui->lineEditANSWER->setText("Le capteur est " + avantLaVirgule + " = " + aprèsLaVirgule);
 }
 
 void clientQT::onDataReceived(){
