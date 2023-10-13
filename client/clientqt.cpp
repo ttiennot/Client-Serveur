@@ -59,7 +59,7 @@ void clientQT::onCelciusClicked(){
     QString val = "Td" + celcius;
     QByteArray msg = val.toUtf8();
     //ui->lineEditANSWER->setText(msg);
-    socket->write(msg);
+    socket->write(msg + "?");
 }
 
 void clientQT::onFarenheitClicked(){
@@ -67,14 +67,14 @@ void clientQT::onFarenheitClicked(){
     QString val = "Tf" + farenheit;
     QByteArray msg = val.toUtf8();
     //ui->lineEditANSWER->setText(msg);
-    socket->write(msg);
+    socket->write(msg + "?");
 }
 
 void clientQT::onHygrometrieClicked(){
     QString hygrometrie = ui->lineEditASK->text();
-    QString val = "Tr" + hygrometrie;
+    QString val = "Hr" + hygrometrie;
     QByteArray msg = val.toUtf8();
     //ui->lineEditANSWER->setText(msg);
-    socket->write(msg);
+    socket->write(msg + "?");
 }
 
